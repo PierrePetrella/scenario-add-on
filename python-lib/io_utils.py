@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import dataiku
+import pandas as pd
 import openpyxl
 import io
 from tempfile import NamedTemporaryFile
@@ -40,6 +41,10 @@ def write_df_in_wb(df):
     return wb
 
 def write_csv_to_managed_folder (managed_folder_handle, df, file_path):
+    with managed_folder_handle.get_writer(file_path +".csv") as writer:
+        writer.write(df.to_csv().encode("utf-8"))
+
+def read_csv_from_managed_folder (managed_folder_handle, file_path):
     with managed_folder_handle.get_writer(file_path +".csv") as writer:
         writer.write(df.to_csv().encode("utf-8"))
         
