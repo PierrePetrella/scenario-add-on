@@ -60,7 +60,7 @@ class MyRunnable(Runnable):
         scenario = project_api.get_scenario(self.scenario_name)
 
         set_project_var(iterative_step, 0)
-        for i in range(int(self.N)):
+        for i in range(self.N):
             inc_project_var(iterative_step)
             scenario.run_and_wait()
         
