@@ -58,6 +58,7 @@ def write_wb_to_managed_folder(managed_folder_handle,wb, file_path):
         with output_folder.get_writer(file_path) as w:
             w.write(output)
 
+
 def rename_managed_folder_file(handle_managed_folder, file_path, new_file_path):
     with handle_managed_folder.get_download_stream(file_path) as f:
         file = f.read()
