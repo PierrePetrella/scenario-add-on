@@ -32,7 +32,14 @@ class MyRunnable(Runnable):
         self.config = config
         self.plugin_config = plugin_config
         
-        #User Input 
+        #Input Params
+        N_input = config.get("N", None)
+        if (is_int(N_input)):
+            self.N= int(N_input)
+        else:
+            raise Exception("N must be an Integer not : " + N_input)
+            
+        
         self.N=config.get("N", None)
         self.scenario_name = config.get("N",None)
         
@@ -53,7 +60,7 @@ class MyRunnable(Runnable):
         scenario = project_api.get_scenario(self.scenario_name)
 
         set_project_var(iterative_step, 0)
-        for i in range(self.N):
+        for i in range(int(self.N)):
             inc_project_var(iterative_step)
             scenario.run_and_wait()
         
