@@ -31,12 +31,6 @@ file_name = get_recipe_config().get('file_name', None)
 file_type = get_recipe_config().get('file_type', None)
 
 
-
-# Input dynamic name
-#v = dataiku.get_custom_variables()
-#file_name = v["iterative_step_output_prefix"] + "_" + v["iterative_step"] + ".xlsx"
-
-# -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
 def write_wb_to_managed_folder(wb, file_name):
     with NamedTemporaryFile() as tmp:
         wb.save(tmp.name)
@@ -44,7 +38,6 @@ def write_wb_to_managed_folder(wb, file_name):
         with output_folder.get_writer(file_name + ".xlsx") as w:
             w.write(output)
 
-# -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
 def write_df_in_wb(df):
     rows = dataframe_to_rows(df, index=False)
     wb = openpyxl.Workbook()
@@ -54,6 +47,12 @@ def write_df_in_wb(df):
              ws.cell(row=r_idx, column=c_idx, value=value)
     return wb
 
-# -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
-wb = write_df_in_wb(input_dataset_df)
-write_wb_to_managed_folder(wb, file_name)
+
+
+if (file_type == "csv"):
+    
+elif (file_type == "excel"):
+    wb = write_df_in_wb(input_dataset_df)
+    write_wb_to_managed_folder(wb, file_name) 
+else:
+    raise Exception ("Export file type : " + file_type + " is not supported")
