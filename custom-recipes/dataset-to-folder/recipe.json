@@ -24,7 +24,7 @@
 
     "outputRoles": [
         {
-            "name": "folder_output",
+            "name": "output_folder",
             "label": "Managed Folder Output",
             "description": "Managed Folder to save input Dataset in file format",
             "arity": "UNARY",
