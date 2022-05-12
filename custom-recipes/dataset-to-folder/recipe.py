@@ -15,7 +15,7 @@ project = client.get_default_project()
 # Get handle on input dataset
 input_dataset_name = get_input_names_for_role('input_dataset')[0]
 input_dataset = dataiku.Dataset(input_dataset_name)
-input_dataset_df = output_dataset.get_dataframe()
+input_dataset_df = input_dataset.get_dataframe()
 
 # Get handle on output dataset name to feed to the "COPY" query
 output_dataset_name = get_output_names_for_role('output_folder')[0]
@@ -38,7 +38,7 @@ def write_wb_to_managed_folder(wb,output_folder, file_name):
     with NamedTemporaryFile() as tmp:
         wb.save(tmp.name)
         output = tmp.read()
-        with output_folder.get_writer(file_name) as w:
+        with output_folder.get_writer(file_name + ".xlsx") as w:
             w.write(output)
 
 # -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
