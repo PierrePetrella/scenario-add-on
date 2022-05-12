@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import dataiku
 import openpyxl
-
+import io
+from tempfile import NamedTemporaryFile
 
 
 DUMMY_CONSTANT = "foo"
