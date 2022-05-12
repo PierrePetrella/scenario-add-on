@@ -2,7 +2,7 @@
 {
     "meta" : {
         // label: name of the scenario step as displayed, should be short
-        "label": "Custom step dataset-to-managed-folder",
+        "label": "dataset-to-managed-folder",
 
         // description: longer string to help end users understand what this scenario step does
         "description": "",
