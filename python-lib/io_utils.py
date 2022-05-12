@@ -41,3 +41,25 @@ def write_df_in_wb(df):
 def write_csv_to_managed_folder (managed_folder_handle, df, file_path):
     with managed_folder_handle.get_writer(file_path +".csv") as writer:
         writer.write(df.to_csv().encode("utf-8"))
+        
+# Read excel from Managed Folder
+def read_excel_from_managed_folder(managed_folder_handle,file_path):
+    with managed_folder_handle.get_download_stream(file_path) as f:
+        bytes_in = io.BytesIO(f.read())
+        wb = openpyxl.load_workbook(bytes_in)
+    return wb
+
+#Write wb to a Managed Folder
+def write_wb_to_managed_folder(managed_folder_handle,wb, file_path):
+    with NamedTemporaryFile() as tmp:
+        wb.save(tmp.name)
+        output = tmp.read()
+        with output_folder.get_writer(file_path) as w:
+            w.write(output)
+
+def rename_managed_folder_file(handle_managed_folder, file_path, new_file_path):
+    with handle_managed_folder.get_download_stream(file_path) as f:
+        file = f.read()
+    with handle_managed_folder.get_writer(new_file_path) as w:
+        w.write(file)
+    handle_managed_folder.delete_path(file_path)
