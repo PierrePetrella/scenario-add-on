@@ -44,9 +44,10 @@ def write_csv_to_managed_folder (managed_folder_handle, df, file_path):
     with managed_folder_handle.get_writer(file_path +".csv") as writer:
         writer.write(df.to_csv().encode("utf-8"))
 
-def read_csv_from_managed_folder (managed_folder_handle, file_path):
-    with managed_folder_handle.get_writer(file_path +".csv") as writer:
-        writer.write(df.to_csv().encode("utf-8"))
+def read_csv_from_managed_folder (handle_managed_folder, file_path):
+    with handle_managed_folder.get_download_stream(file_path) as f:
+        df = pd.read_csv(f)
+    return df
         
 # Read excel from Managed Folder
 def read_excel_from_managed_folder(managed_folder_handle,file_path):
