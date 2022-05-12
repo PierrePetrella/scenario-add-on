@@ -37,7 +37,7 @@ file_type = get_recipe_config().get('file_type', None)
 #file_name = v["iterative_step_output_prefix"] + "_" + v["iterative_step"] + ".xlsx"
 
 # -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
-def write_wb_to_managed_folder(wb,output_folder, file_name):
+def write_wb_to_managed_folder(wb, file_name):
     with NamedTemporaryFile() as tmp:
         wb.save(tmp.name)
         output = tmp.read()
@@ -45,8 +45,8 @@ def write_wb_to_managed_folder(wb,output_folder, file_name):
             w.write(output)
 
 # -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
-def write_df_in_wb(output_dataset_df):
-    rows = dataframe_to_rows(output_dataset_df, index=False)
+def write_df_in_wb(df):
+    rows = dataframe_to_rows(df, index=False)
     wb = openpyxl.Workbook()
     ws = wb.active
     for r_idx, row in enumerate(rows, 1):
@@ -55,5 +55,5 @@ def write_df_in_wb(output_dataset_df):
     return wb
 
 # -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
-wb = write_df_in_wb(output_dataset_df)
-write_wb_to_managed_folder(wb,output_folder, file_name)
+wb = write_df_in_wb(input_dataset_df)
+write_wb_to_managed_folder(wb, file_name)
