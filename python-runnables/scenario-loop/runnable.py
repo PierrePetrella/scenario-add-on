@@ -41,7 +41,6 @@ class MyRunnable(Runnable):
         return None
     
     # Init project_var to value
-    
     def run(self, progress_callback):
         # scenario_loop !
         iterative_step = "iterative_step"
