@@ -1,4 +1,3 @@
-
 import dataiku
 from dataiku.customrecipe import *
 
