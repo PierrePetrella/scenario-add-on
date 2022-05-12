@@ -34,6 +34,8 @@ class MyRunnable(Runnable):
         
         #Input Params
         N_input = config.get("N", None)
+        print (str.isdigit(N_input))
+        print (int(N_input))
         if (str.isdigit(N_input)):
             self.N= int(N_input)
         else:
