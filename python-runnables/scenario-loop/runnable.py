@@ -32,8 +32,10 @@ class MyRunnable(Runnable):
         self.config = config
         self.plugin_config = plugin_config
         
-        #Input Params
+        #Get and Check Input Params 
         self.scenario_name = config.get("N",None)
+        
+        
         N_input = config.get("N", None)
         print (str.isdigit(N_input))
         print (int(N_input))
