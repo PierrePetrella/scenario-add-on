@@ -33,7 +33,7 @@ class MyRunnable(Runnable):
         self.plugin_config = plugin_config
         
         #Get and Check Input Params 
-        self.scenario_name = config.get("N",None)
+        self.scenario_name = config.get("scenario",None)
         
         
         N_input = config.get("N", None)
