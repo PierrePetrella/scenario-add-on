@@ -1,6 +1,22 @@
 # This file is the actual code for the Python runnable scenario-loop
 from dataiku.runnables import Runnable
 
+# Init project_var to value
+def set_project_var (project_var, value):
+    client = dataiku.api_client()
+    project_api = client.get_default_project()
+    v = project_api.get_variables()
+    v["standard"][project_var] = value
+    project_api.set_variables(v)
+
+# Inc project_var by 1
+def inc_project_var(project_var, inc = 1):
+    client = dataiku.api_client()
+    project_api = client.get_default_project()
+    v = project_api.get_variables()
+    v["standard"][project_var] = v["standard"][project_var] + inc
+    project_api.set_variables(v)
+
 class MyRunnable(Runnable):
     """The base interface for a Python runnable"""
 
@@ -14,17 +30,29 @@ class MyRunnable(Runnable):
         self.config = config
         self.plugin_config = plugin_config
         
+        #User Input 
+        self.N=config.get("N", None)
+        self.scenario_name = config.get("N",None)
+        
     def get_progress_target(self):
         """
         If the runnable will return some progress info, have this function return a tuple of 
         (target, unit) where unit is one of: SIZE, FILES, RECORDS, NONE
         """
         return None
-
+    
+    # Init project_var to value
+    
     def run(self, progress_callback):
-        """
-        Do stuff here. Can return a string or raise an exception.
-        The progress_callback is a function expecting 1 value: current progress
-        """
-        raise Exception("unimplemented")
+        # scenario_loop !
+        iterative_step = "iterative_step"
+        client = dataiku.api_client()
+        project_api = client.get_default_project()
+        scenario = project_api.get_scenario(scenario_name)
+
+        set_project_var(iterative_step, 0)
+        for i in range(N):
+            inc_project_var(iterative_step)
+            scenario.run_and_wait()
+        
         
