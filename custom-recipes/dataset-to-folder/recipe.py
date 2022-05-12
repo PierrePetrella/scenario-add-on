@@ -22,7 +22,7 @@ output_folder = dataiku.Folder(output_folder_id)
 
 
 # Get handle on the PARAMS
-file_path = get_recipe_config().get('file_path', None)
+file_path = get_recipe_config().get('file_name', None)
 file_type = get_recipe_config().get('file_type', None)
 
 
