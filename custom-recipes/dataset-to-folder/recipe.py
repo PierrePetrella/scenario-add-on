@@ -21,7 +21,7 @@ print ("get_output_names_for_role :", get_output_names_for_role('output_folder')
 
 print ("get_output_names :", get_output_names('output_folder'))
 
-output_dataset_name = get_output_names_for_role('output_folder')[0]
+output_dataset_name = get_output_names('output_folder')[0].split(".")[1]
 output_folder = dataiku.Folder(output_dataset_name)
 
 
