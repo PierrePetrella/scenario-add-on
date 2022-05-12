@@ -41,7 +41,7 @@
             "name": "file_name",
             "label": "Output file name",
             "type": "STRING",
-            "description": "Some documentation for parameter1",
+            "description": "Output file name : can be dynamically set using project variables : ${variable_name}",
             "mandatory": true
         },
         
