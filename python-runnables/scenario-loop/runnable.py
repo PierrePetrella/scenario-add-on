@@ -1,23 +1,9 @@
 # This file is the actual code for the Python runnable scenario-loop
 import dataiku
 from dataiku.runnables import Runnable
+from io_utils import *
 
 
-# Init project_var to value
-def set_project_var (project_var, value):
-    client = dataiku.api_client()
-    project_api = client.get_default_project()
-    v = project_api.get_variables()
-    v["standard"][project_var] = value
-    project_api.set_variables(v)
-
-# Inc project_var by 1
-def inc_project_var(project_var, inc = 1):
-    client = dataiku.api_client()
-    project_api = client.get_default_project()
-    v = project_api.get_variables()
-    v["standard"][project_var] = v["standard"][project_var] + inc
-    project_api.set_variables(v)
 
 class MyRunnable(Runnable):
     """The base interface for a Python runnable"""
