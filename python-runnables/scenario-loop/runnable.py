@@ -50,10 +50,10 @@ class MyRunnable(Runnable):
         iterative_step = "iterative_step"
         client = dataiku.api_client()
         project_api = client.get_default_project()
-        scenario = project_api.get_scenario(scenario_name)
+        scenario = project_api.get_scenario(self.scenario_name)
 
         set_project_var(iterative_step, 0)
-        for i in range(N):
+        for i in range(self.N):
             inc_project_var(iterative_step)
             scenario.run_and_wait()
         
