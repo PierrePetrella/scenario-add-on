@@ -21,7 +21,7 @@ print ("get_output_names_for_role :", get_output_names_for_role('output_folder')
 
 print ("get_output_names :", get_output_names('output_folder'))
 
-output_dataset_name = get_output_names('output_folder')[0].split(".")[1]
+output_file_path = get_output_names('output_folder')[0].split(".")[1]
 output_folder = dataiku.Folder(output_dataset_name)
 
 
@@ -31,11 +31,11 @@ file_name = get_recipe_config().get('file_name', None)
 file_type = get_recipe_config().get('file_type', None)
 
 
-def write_wb_to_managed_folder(wb, file_name):
+def write_wb_to_managed_folder(wb, file_path):
     with NamedTemporaryFile() as tmp:
         wb.save(tmp.name)
         output = tmp.read()
-        with output_folder.get_writer(file_name + ".xlsx") as w:
+        with output_folder.get_writer(file_path + ".xlsx") as w:
             w.write(output)
 
 def write_df_in_wb(df):
@@ -47,12 +47,15 @@ def write_df_in_wb(df):
              ws.cell(row=r_idx, column=c_idx, value=value)
     return wb
 
+def write_csv_to_managed_folder (df, file_path):
+    with handle.get_writer(file_path) as writer:
+        df.to_csv(writer) 
 
 
 if (file_type == "csv"):
-    
+    write_csv_to_managed_folder (input_dataset_df, output_file_path)
 elif (file_type == "excel"):
     wb = write_df_in_wb(input_dataset_df)
-    write_wb_to_managed_folder(wb, file_name) 
+    write_wb_to_managed_folder(wb, output_file_path) 
 else:
     raise Exception ("Export file type : " + file_type + " is not supported")
