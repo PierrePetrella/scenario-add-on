@@ -1,5 +1,7 @@
 # This file is the actual code for the Python runnable scenario-loop
+import dataiku
 from dataiku.runnables import Runnable
+
 
 # Init project_var to value
 def set_project_var (project_var, value):
