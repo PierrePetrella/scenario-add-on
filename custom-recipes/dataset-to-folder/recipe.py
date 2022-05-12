@@ -44,7 +44,7 @@ def write_df_in_wb(df):
 
 def write_csv_to_managed_folder (managed_folder_handle, df, file_path):
     with managed_folder_handle.get_writer(file_path) as writer:
-        writer.write(Final_df1.to_csv().encode("utf-8"))
+        writer.write(df.to_csv().encode("utf-8"))
 
 
 if (file_type == "csv"):
