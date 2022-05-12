@@ -18,7 +18,7 @@ input_dataset = dataiku.Dataset(input_dataset_name)
 input_dataset_df = input_dataset.get_dataframe()
 
 # Get handle on output dataset name to feed to the "COPY" query
-print (get_output_names_for_role('output_folder'))
+print ("output :", get_output_names_for_role('output_folder'))
 
 output_dataset_name = get_output_names_for_role('output_folder')[0]
 output_folder = dataiku.Folder(output_dataset_name)
