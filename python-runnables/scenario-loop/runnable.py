@@ -33,6 +33,7 @@ class MyRunnable(Runnable):
         self.plugin_config = plugin_config
         
         #Input Params
+        self.scenario_name = config.get("N",None)
         N_input = config.get("N", None)
         print (str.isdigit(N_input))
         print (int(N_input))
@@ -41,9 +42,8 @@ class MyRunnable(Runnable):
         else:
             raise Exception("N must be an Integer not : " + N_input)
             
-        
-        self.N=config.get("N", None)
-        self.scenario_name = config.get("N",None)
+       
+       
         
     def get_progress_target(self):
         """
