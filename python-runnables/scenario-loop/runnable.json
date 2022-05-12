@@ -72,7 +72,7 @@
     */
     "macroRoles": [
      /* {
-            "type": "DATASET",
+            "type": "SCENARIO",
             "targetParamsKey": "input_dataset"
         } */
     ]
