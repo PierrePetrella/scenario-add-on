@@ -21,13 +21,13 @@ print ("get_output_names_for_role :", get_output_names_for_role('output_folder')
 
 print ("get_output_names :", get_output_names('output_folder'))
 
-output_file_path = get_output_names('output_folder')[0].split(".")[1]
-output_folder = dataiku.Folder(output_dataset_name)
+output_folder_id = get_output_names('output_folder')[0].split(".")[1]
+output_folder = dataiku.Folder(output_folder_id)
 
 
 # Get handle on the PARAMS
 
-file_name = get_recipe_config().get('file_name', None)
+file_path = get_recipe_config().get('file_path', None)
 file_type = get_recipe_config().get('file_type', None)
 
 
