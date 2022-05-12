@@ -45,7 +45,7 @@
             "mandatory": true
         },
         
-        /* A "SELECT" parameter is a multi-choice selector. Choices are specified using the selectChoice field*/
+       
         {
             "name": "file_type",
             "label": "Output file format",
