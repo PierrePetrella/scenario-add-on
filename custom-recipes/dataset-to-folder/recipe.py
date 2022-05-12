@@ -26,11 +26,11 @@ file_path = get_recipe_config().get('file_path', None)
 file_type = get_recipe_config().get('file_type', None)
 
 
-def write_wb_to_managed_folder(wb, file_path):
+def write_wb_to_managed_folder(managed_folder_handle, wb, file_path):
     with NamedTemporaryFile() as tmp:
         wb.save(tmp.name)
         output = tmp.read()
-        with output_folder.get_writer(file_path + ".xlsx") as w:
+        with managed_folder_handle.get_writer(file_path + ".xlsx") as w:
             w.write(output)
 
 def write_df_in_wb(df):
@@ -42,15 +42,15 @@ def write_df_in_wb(df):
              ws.cell(row=r_idx, column=c_idx, value=value)
     return wb
 
-def write_csv_to_managed_folder (df, file_path):
-    with handle.get_writer(file_path) as writer:
+def write_csv_to_managed_folder (managed_folder_handle, df, file_path):
+    with managed_folder_handle.get_writer(file_path) as writer:
         df.to_csv(writer) 
 
 
 if (file_type == "csv"):
-    write_csv_to_managed_folder (input_dataset_df, file_path)
+    write_csv_to_managed_folder (output_folder, input_dataset_df, file_path)
 elif (file_type == "excel"):
     wb = write_df_in_wb(input_dataset_df)
-    write_wb_to_managed_folder(wb, file_path) 
+    write_wb_to_managed_folder(managed_folder_handle, wb, file_path) 
 else:
     raise Exception ("Export file type : " + file_type + " is not supported")
