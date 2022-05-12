@@ -3,11 +3,11 @@
     // Meta data for display purposes
     "meta": {
         // label: name of the recipe as displayed, should be short
-        "label": "Dataset to folder",
+        "label": "Export Dataset to Folder",
         // description: longer string to help end users understand what this recipe does
-        "description": "",
+        "description": "This recipe exports an the input Dataset to a Mangaged Folder",
         // icon: must be one of the FontAwesome 3.2.1 icons, complete list here at https://fontawesome.com/v3.2.1/icons/
-        "icon": "icon-puzzle-piece"
+        "icon": "icon-long-arrow-right"
     },
 
     "kind": "PYTHON",
@@ -34,10 +34,10 @@
     "outputRoles": [
         {
             "name": "folder_output",
-            "label": "out",
-            "description": "what main output means",
+            "label": "Managed Folder Output",
+            "description": "Managed Folder to save input Dataset in file format",
             "arity": "UNARY",
-            "required": false,
+            "required": true,
             "acceptsManagedFolder": true,
             "acceptsDataset": false
         }
@@ -78,14 +78,9 @@
             ]
         }
 
-        // The 'COLUMNS' type works in the same way, except that it is a list of strings.
     ],
 
-    // The field "resourceKeys" holds a list of keys that allows to limit the number
-    // of concurrent executions and activities triggered by this recipe.
-    //
-    // Administrators can configure the limit per resource key in the Administration > Settings > Flow build
-    // screen.
+
 
     "resourceKeys": []
 
