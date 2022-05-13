@@ -4,7 +4,6 @@ from io_utils import *
 
 import pandas as pd, numpy as np
 import openpyxl
-from openpyxl.utils.dataframe import dataframe_to_rows
 from tempfile import NamedTemporaryFile
 
 client = dataiku.api_client()
