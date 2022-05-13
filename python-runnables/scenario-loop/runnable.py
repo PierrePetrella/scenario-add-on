@@ -18,17 +18,36 @@ class MyRunnable(Runnable):
         self.config = config
         self.plugin_config = plugin_config
         
-        #Get and Check Input Params 
+        ### Get and Check Input Params 
+        
         self.scenario_name = config.get("scenario",None)
         
+   
+        loop_type = config.get("loop_type", None)
+        self.loop_list = []
+        if (loop_type == "counter"):
+            N_input = config.get("N", None)
+            print (str.isdigit(N_input))
+            print (int(N_input))
+            if (str.isdigit(N_input)):
+                self.N= int(N_input)
+                self.loop_list = range(N)
+            else:
+                raise Exception("N must be an Integer not : " + N_input)
         
-        N_input = config.get("N", None)
-        print (str.isdigit(N_input))
-        print (int(N_input))
-        if (str.isdigit(N_input)):
-            self.N= int(N_input)
+        elif (loop_type == "column_values"):
+            dataset_name = config.get("dataset", None)
+            loop_dataset = dataiku.Dataset(dataset_name)
+            column_name = config.get("column_name", None)
+            df = dataset.get_dataframe()
+            if column_name in df:
+                self.loop_list = list(df[column_name])
+            else:
+                raise Exception (column_name + " is not in " + dataset_name)
         else:
-            raise Exception("N must be an Integer not : " + N_input)
+            raise Exception (loop_type + " loop_type is not supported")
+
+            
             
        
        
