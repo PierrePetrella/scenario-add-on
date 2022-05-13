@@ -63,7 +63,7 @@ def write_wb_to_managed_folder(managed_folder_handle,wb, file_path):
     with NamedTemporaryFile() as tmp:
         wb.save(tmp.name)
         output = tmp.read()
-        with managed_folder_handle.get_writer(file_path) as w:
+        with managed_folder_handle.get_writer(file_path + ".xlsx") as w:
             w.write(output)
 
 
