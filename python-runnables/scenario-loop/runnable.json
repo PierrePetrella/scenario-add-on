@@ -68,11 +68,11 @@
         },
         {
             "name": "column",
-            "label": "Column name",
+            "label": "Column Name",
             "type": "STRING",
             "mandatory": true,
             "visibilityCondition":"model.loop_type == 'column_values'",
-            "description": "Column to iterate on"
+            "description": "Name of column to iterate on"
         }
     ],
 
