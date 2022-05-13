@@ -33,14 +33,14 @@ def write_wb_to_managed_folder(managed_folder_handle, wb, file_path):
         with managed_folder_handle.get_writer(file_path + ".xlsx") as w:
             w.write(output)
 
-#def write_df_in_wb(df):
-#    rows = dataframe_to_rows(df, index=False)
-#    wb = openpyxl.Workbook()
-#    ws = wb.active
-#    for r_idx, row in enumerate(rows, 1):
-#        for c_idx, value in enumerate(row, 1):
-#             ws.cell(row=r_idx, column=c_idx, value=value)
-#    return wb
+def write_df_in_wb(df):
+    rows = dataframe_to_rows(df, index=False)
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    for r_idx, row in enumerate(rows, 1):
+        for c_idx, value in enumerate(row, 1):
+             ws.cell(row=r_idx, column=c_idx, value=value)
+    return wb
 
 def write_csv_to_managed_folder (managed_folder_handle, df, file_path):
     with managed_folder_handle.get_writer(file_path +".csv") as writer:
