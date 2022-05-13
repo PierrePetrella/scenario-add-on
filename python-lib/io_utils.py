@@ -9,7 +9,6 @@ import io
 from tempfile import NamedTemporaryFile
 
 
-
 # Init project_var to value
 def set_project_var (project_var, value):
     client = dataiku.api_client()
