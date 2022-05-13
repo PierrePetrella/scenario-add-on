@@ -63,7 +63,7 @@
             "label": "Dataset",
             "type": "DATASET",
             "mandatory": true,
-            "visibilityCondition":"model.loop_type == 'distinct_column_values'",
+            "visibilityCondition":"model.loop_type == 'column_values'",
             "description": "Dataset containing column to interate on"
         },
         {
@@ -71,7 +71,7 @@
             "label": "Column",
             "type": "COLUMN",
             "mandatory": true,
-            "visibilityCondition":"model.loop_type == 'distinct_column_values'",
+            "visibilityCondition":"model.loop_type == 'column_values'",
             "description": "Column to iterate on"
         }
     ],
