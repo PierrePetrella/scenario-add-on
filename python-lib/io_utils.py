@@ -6,7 +6,7 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 import io
 from tempfile import NamedTemporaryFile
 
-DUMMY_CONSTANT = "foo"
+
 
 # Init project_var to value
 def set_project_var (project_var, value):
