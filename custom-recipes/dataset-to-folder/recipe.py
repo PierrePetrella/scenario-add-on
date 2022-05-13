@@ -9,14 +9,6 @@ from tempfile import NamedTemporaryFile
 client = dataiku.api_client()
 project = client.get_default_project()
 
-def write_df_in_wb(df):
-    rows = dataframe_to_rows(df, index=False)
-    wb = openpyxl.Workbook()
-    ws = wb.active
-    for r_idx, row in enumerate(rows, 1):
-        for c_idx, value in enumerate(row, 1):
-             ws.cell(row=r_idx, column=c_idx, value=value)
-    return wb
 
 ### Get handles in INPUT and OUTPUT 
 # Get handle on input dataset
