@@ -67,7 +67,7 @@
             "description": "Dataset containing column to interate on"
         },
         {
-            "name": "column",
+            "name": "column_name",
             "label": "Column Name",
             "type": "STRING",
             "mandatory": true,

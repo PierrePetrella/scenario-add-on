@@ -14,6 +14,7 @@ class MyRunnable(Runnable):
         :param config: the dict of the configuration of the object
         :param plugin_config: contains the plugin settings
         """
+        self.step_project_var = "iterative_step"
         self.project_key = project_key
         self.config = config
         self.plugin_config = plugin_config
@@ -44,14 +45,11 @@ class MyRunnable(Runnable):
                 self.loop_list = list(df[column_name])
             else:
                 raise Exception (column_name + " is not in " + dataset_name)
+        
         else:
             raise Exception (loop_type + " loop_type is not supported")
 
-            
-            
-       
-       
-        
+
     def get_progress_target(self):
         """
         If the runnable will return some progress info, have this function return a tuple of 
@@ -62,14 +60,14 @@ class MyRunnable(Runnable):
     # Init project_var to value
     def run(self, progress_callback):
         # scenario_loop !
-        iterative_step = "iterative_step"
+        
         client = dataiku.api_client()
         project_api = client.get_default_project()
         scenario = project_api.get_scenario(self.scenario_name)
 
-        set_project_var(iterative_step, 0)
-        for i in range(self.N):
-            inc_project_var(iterative_step)
+        
+        for step in self.loop_list:
+            set_project_var(self.step_project_var,step)
             scenario.run_and_wait()
         
         
