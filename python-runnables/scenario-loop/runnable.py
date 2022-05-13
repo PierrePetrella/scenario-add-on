@@ -40,7 +40,7 @@ class MyRunnable(Runnable):
             dataset_name = config.get("dataset", None)
             loop_dataset = dataiku.Dataset(dataset_name)
             column_name = config.get("column_name", None)
-            df = dataset.get_dataframe()
+            df = loop_dataset.get_dataframe()
             if column_name in df:
                 self.loop_list = list(df[column_name])
             else:
