@@ -14,7 +14,7 @@ class MyRunnable(Runnable):
         :param config: the dict of the configuration of the object
         :param plugin_config: contains the plugin settings
         """
-        self.step_project_var = "iterative_step"
+        self.step_project_var = "step"
         self.project_key = project_key
         self.config = config
         self.plugin_config = plugin_config
