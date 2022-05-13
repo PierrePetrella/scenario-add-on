@@ -33,11 +33,46 @@
             "mandatory": true
         },
         {
+              "name": "loop_type",
+              "label": "Looping Method",
+              "type": "SELECT",
+              "selectChoices" : [
+                  { 
+                       "value" : "counter",
+                       "label" : "Counter",
+                       "description": "Loop N time through the scenario"
+                  },
+                  { 
+                       "value" : "column_values",
+                       "label" : "Column Values",
+                       "description": "Run scenario for each value of a given dataset column" 
+                  }
+              ],
+              "mandatory": true
+         },
+        {
             "name": "N",
             "label": "N",
             "type": "STRING",
-            "mandatory": true
-            
+            "mandatory": true,
+            "visibilityCondition":"model.loop_type == 'counter'",
+            "description": "Number of loops through the scenario"
+        },
+        {
+            "name": "dataset",
+            "label": "Dataset",
+            "type": "DATASET",
+            "mandatory": true,
+            "visibilityCondition":"model.loop_type == 'distinct_column_values'",
+            "description": "Dataset containing column to interate on"
+        },
+        {
+            "name": "column",
+            "label": "Column",
+            "type": "COLUMN",
+            "mandatory": true,
+            "visibilityCondition":"model.loop_type == 'distinct_column_values'",
+            "description": "Column to iterate on"
         }
     ],
 
