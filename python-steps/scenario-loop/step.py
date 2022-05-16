@@ -5,24 +5,15 @@ from dataiku.customstep import *
 from io_utils import *
 
 
-# INITIALISATION 
+### INITIALISATION 
 step_project_var = "step"
-
-# the plugin's resource folder path (string)
 resource_folder = get_step_resource()
-
-# settings at the plugin level (set by plugin administrators in the Plugins section)
 plugin_config = get_plugin_config()
-
-# settings at the step instance level (set by the user creating a scenario step)
 step_config = get_step_config()
-
         
-        
-### Get and Check Input Params 
+# Get and Check Input Params 
 
 scenario_name = step_config.get("scenario",None)
-
 
 loop_type = step_config.get("loop_type", None)
 loop_list = []
