@@ -41,7 +41,7 @@ else:
     raise Exception (loop_type + " loop_type is not supported")
     
     
-### Run Loop
+### RUN LOOP
 
 client = dataiku.api_client()
 project_api = client.get_default_project()
