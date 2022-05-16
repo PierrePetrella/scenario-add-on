@@ -32,7 +32,7 @@ class MyRunnable(Runnable):
             print (int(N_input))
             if (str.isdigit(N_input)):
                 self.N= int(N_input)
-                self.loop_list = range(N)
+                self.loop_list = range(self.N)
             else:
                 raise Exception("N must be an Integer not : " + N_input)
         
