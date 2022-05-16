@@ -23,35 +23,53 @@
     */
     "params": [
         {
-            "name": "parameter1",
-            "label": "User-readable name",
-            "type": "STRING",
-            "description": "Some documentation for parameter1",
+            "name": "scenario",
+            "label": "Scenario step",
+            "type": "SCENARIO",
+            "description": "Scenario to to run at each step",
             "mandatory": true
         },
         {
-            "name": "parameter2",
-            "type": "INT",
-            "defaultValue" : 42
-            /* Note that standard json parsing will return it as a double in Python (instead of an int), so you need to write
-               int(self.config()['parameter2'])
-            */
-        },
-
-        /* A "SELECT" parameter is a multi-choice selector. Choices are specified using the selectChoice field*/
+              "name": "loop_type",
+              "label": "Looping Method",
+              "type": "SELECT",
+              "selectChoices" : [
+                  { 
+                       "value" : "counter",
+                       "label" : "Counter",
+                       "description": "Loop N time through the scenario"
+                  },
+                  { 
+                       "value" : "column_values",
+                       "label" : "Column Values",
+                       "description": "Run scenario for each value of a given dataset column" 
+                  }
+              ],
+              "mandatory": true
+         },
         {
-            "name": "parameter8",
-            "type": "SELECT",
-            "selectChoices": [
-                {
-                    "value": "val_x",
-                    "label": "display name for val_x"
-                },
-                {
-                    "value": "val_y",
-                    "label": "display name for val_y"
-                }
-            ]
+            "name": "N",
+            "label": "N",
+            "type": "STRING",
+            "mandatory": true,
+            "visibilityCondition":"model.loop_type == 'counter'",
+            "description": "Number of loops through the scenario"
+        },
+        {
+            "name": "dataset",
+            "label": "Dataset",
+            "type": "DATASET",
+            "mandatory": true,
+            "visibilityCondition":"model.loop_type == 'column_values'",
+            "description": "Dataset containing column to interate on"
+        },
+        {
+            "name": "column_name",
+            "label": "Column Name",
+            "type": "STRING",
+            "mandatory": true,
+            "visibilityCondition":"model.loop_type == 'column_values'",
+            "description": "Name of column to iterate on"
         }
     ]
 }
