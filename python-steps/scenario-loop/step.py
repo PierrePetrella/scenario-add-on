@@ -19,7 +19,7 @@ scenario_name = step_config.get("scenario",None)
 loop_type = step_config.get("loop_type", None)
 loop_list = []
 if (loop_type == "counter"):
-    N_input = config.get("N", None)
+    N_input = step_config.get("N", None)
     pattern = re.compile("^(\${)+.*}")   
     if (pattern.match(N_input)):
 
