@@ -9,7 +9,7 @@ import io
 from tempfile import NamedTemporaryFile
 
 
-# Set project_var to value
+
 def set_project_var (project_var, value):
     client = dataiku.api_client()
     project_api = client.get_default_project()
@@ -17,13 +17,12 @@ def set_project_var (project_var, value):
     v["standard"][project_var] = value
     project_api.set_variables(v)
 
-# Increment project_var by inc
-#def inc_project_var(project_var, inc = 1):
-#    client = dataiku.api_client()
-#    project_api = client.get_default_project()
-#    v = project_api.get_variables()
-#    v["standard"][project_var] = v["standard"][project_var] + inc
-#    project_api.set_variables(v)
+def get_project_var(project_var):
+    client = dataiku.api_client()
+    project_api = client.get_default_project()
+    v = project_api.get_variables()
+    var_value = v["standard"].get(project_var,None)
+    return var_value
 
 def write_wb_to_managed_folder(managed_folder_handle, wb, file_path):
     with NamedTemporaryFile() as tmp:
