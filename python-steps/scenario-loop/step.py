@@ -3,6 +3,7 @@
 import os, json
 from dataiku.customstep import *
 from io_utils import *
+import re
 
 
 ### INITIALISATION 
