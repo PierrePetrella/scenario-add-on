@@ -18,9 +18,18 @@ scenario_name = step_config.get("scenario",None)
 loop_type = step_config.get("loop_type", None)
 loop_list = []
 if (loop_type == "counter"):
-    N_input = step_config.get("N", None)
-    print (str.isdigit(N_input))
-    print (int(N_input))
+    pattern = re.compile("^(\${)+.*}")   
+    if (pattern.match(N_input)):
+
+        var_name = N_input[2:-1]
+        var_value = get_project_var(var_name)
+
+        if (var_value !=None):
+            N_input = str(var_value)
+        else:
+            raise Exception("Project variable : {}, does not exist for this project".format(var_name))
+
+
     if (str.isdigit(N_input)):
         N= int(N_input)
         loop_list = range(N)
