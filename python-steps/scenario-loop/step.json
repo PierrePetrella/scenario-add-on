@@ -10,7 +10,7 @@
     "params": [
         {
             "name": "scenario",
-            "label": "Scenario step",
+            "label": "Iteration Scenario",
             "type": "SCENARIO",
             "description": "Scenario to to run at each step",
             "mandatory": true
