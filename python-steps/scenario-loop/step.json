@@ -52,7 +52,7 @@
         {
             "name": "column_name",
             "label": "Column Name",
-            "type": "STRING",
+            "type": "DATASET_COLUMN",
             "datasetParamName" :"dataset",
             "mandatory": true,
             "visibilityCondition":"model.loop_type == 'column_values'",
