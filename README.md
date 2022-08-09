@@ -1,6 +1,6 @@
 # Scenario Loop Pluggin
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/dataiku/dss-plugin-) ![Build status](https://img.shields.io/badge/build-passing-brightgreen) ![Support level](https://img.shields.io/badge/support-Unsupported-orange)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/dataiku/dss-plugin-scenario-loop) ![Build status](https://img.shields.io/badge/build-passing-brightgreen) ![Support level](https://img.shields.io/badge/support-Unsupported-orange)
 
 This Dataiku plugin is composed of two components:
 - A scenario step to loop through a scenario multiple times. 
